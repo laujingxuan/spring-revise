@@ -1,7 +1,7 @@
-package com.example.springcoredemo;
+package com.example.springcoredemo.rest;
 
+import com.example.springcoredemo.common.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,8 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
     private Coach myCoach;
 
+//    //constructor injection
+//    @Autowired
+//    public DemoController(Coach theCoach){
+//        myCoach = theCoach;
+//    }
+
+    //setter injection
     @Autowired
-    public DemoController(Coach theCoach){
+    public void setCoach(Coach theCoach){
         myCoach = theCoach;
     }
 
