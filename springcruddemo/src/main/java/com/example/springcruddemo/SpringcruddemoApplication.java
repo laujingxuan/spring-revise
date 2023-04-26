@@ -19,14 +19,46 @@ public class SpringcruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO){
 		return runner -> {
-//			createStudent(studentDAO);
+			createStudent(studentDAO);
 
 //			readStudent(studentDAO);
 			
 //			queryForAllStudents(studentDAO);
 
-			queryForStudentByLastName(studentDAO);
+//			queryForStudentByLastName(studentDAO);
+			
+//			updateStudent(studentDAO);
+
+//			updateAllLastName(studentDAO);
+
+//			deleteById(studentDAO);
+
+//			deleteByFirstName(studentDAO);
 		};
+	}
+
+	private void deleteByFirstName(StudentDAO studentDAO) {
+		int numDeleted = studentDAO.deleteByFirstName("Duff");
+		System.out.println(numDeleted);
+	}
+
+	private void deleteById(StudentDAO studentDAO) {
+		int studentId = 2;
+		studentDAO.deleteById((studentId));
+	}
+
+	private void updateAllLastName(StudentDAO studentDAO) {
+		String newLastName = "Lau";
+		studentDAO.updateAllLastName("Lau");
+	}
+
+	private void updateStudent(StudentDAO studentDAO) {
+		int studentId = 1;
+		Student student = studentDAO.findById(studentId);
+
+		student.setFirstName("Scooby");
+		studentDAO.update(student);
+		System.out.println(student);
 	}
 
 	private void queryForStudentByLastName(StudentDAO studentDAO) {
